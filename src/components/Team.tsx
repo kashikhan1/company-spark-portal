@@ -20,6 +20,24 @@ const teamMembers = [
     role: 'Design Director',
     image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e',
     bio: 'Award-winning designer specializing in user-centered experiences.',
+  },
+  {
+    name: 'David Kim',
+    role: 'Lead Developer',
+    image: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7',
+    bio: 'Full-stack developer with expertise in modern web technologies.',
+  },
+  {
+    name: 'Lisa Martinez',
+    role: 'UX Designer',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158',
+    bio: 'Creating intuitive and engaging user experiences through design.',
+  },
+  {
+    name: 'James Wilson',
+    role: 'Product Manager',
+    image: 'https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b',
+    bio: 'Strategic product leader focused on delivering value to customers.',
   }
 ];
 
@@ -39,7 +57,7 @@ const Team = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-h-[800px] overflow-y-auto custom-scrollbar px-4">
           {teamMembers.map((member, index) => (
             <Card key={index} className="glass-card overflow-hidden">
               <div className="aspect-square overflow-hidden">
