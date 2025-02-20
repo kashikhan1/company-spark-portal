@@ -43,13 +43,13 @@ const teamMembers = [
 
 const Team = () => {
   return (
-    <section id="team" className="section-padding bg-background">
+    <section id="team" className="section-padding bg-gradient-to-b from-background to-secondary/5">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-up">
           <span className="inline-block px-3 py-1 text-sm font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4">
             Our Team
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
             Meet the Experts
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -57,34 +57,45 @@ const Team = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-h-[800px] overflow-y-auto custom-scrollbar px-4">
-          {teamMembers.map((member, index) => (
-            <Card key={index} className="glass-card overflow-hidden">
-              <div className="aspect-square overflow-hidden">
-                <img 
-                  src={member.image} 
-                  alt={member.name}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                <p className="text-primary/80 dark:text-primary/60 font-medium mb-3">{member.role}</p>
-                <p className="text-muted-foreground mb-4">{member.bio}</p>
-                <div className="flex justify-center space-x-4">
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    <LinkedinIcon className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    <TwitterIcon className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                    <GithubIcon className="h-5 w-5" />
-                  </a>
+        <div className="relative overflow-x-auto pb-8">
+          <div className="flex space-x-6 px-4 py-4 animate-slide-left overflow-x-auto custom-scrollbar snap-x snap-mandatory">
+            {teamMembers.map((member, index) => (
+              <Card 
+                key={index} 
+                className="glass-card flex-none w-[300px] md:w-[350px] snap-center transform hover:scale-105 transition-all duration-300"
+              >
+                <div className="relative group">
+                  <div className="aspect-square overflow-hidden rounded-t-lg">
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <div className="flex justify-center space-x-4">
+                      <a href="#" className="hover:text-primary transition-colors">
+                        <LinkedinIcon className="h-5 w-5" />
+                      </a>
+                      <a href="#" className="hover:text-primary transition-colors">
+                        <TwitterIcon className="h-5 w-5" />
+                      </a>
+                      <a href="#" className="hover:text-primary transition-colors">
+                        <GithubIcon className="h-5 w-5" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </Card>
-          ))}
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
+                  <p className="text-primary/80 dark:text-primary/60 font-medium mb-3">{member.role}</p>
+                  <p className="text-muted-foreground">{member.bio}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+          <div className="absolute left-0 right-0 bottom-0 h-1 bg-gradient-to-r from-primary/5 via-primary/20 to-primary/5 rounded-full" />
         </div>
       </div>
     </section>

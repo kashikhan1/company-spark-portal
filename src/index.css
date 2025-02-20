@@ -69,6 +69,34 @@
     @apply opacity-100 translate-y-0;
   }
 
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-slide-left {
+    animation: slideLeft 20s linear infinite;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideLeft {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-350px * 3));
+    }
+  }
+
   .custom-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--primary)) transparent;
@@ -76,6 +104,7 @@
 
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
