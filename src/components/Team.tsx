@@ -1,6 +1,8 @@
 
 import { Card } from './ui/card';
-import { GithubIcon, LinkedinIcon, TwitterIcon } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, TwitterIcon, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from './ui/button';
+import { useRef } from 'react';
 
 const teamMembers = [
   {
@@ -42,6 +44,23 @@ const teamMembers = [
 ];
 
 const Team = () => {
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (sliderRef.current) {
+      const scrollAmount = 350; // Width of one card
+      const currentScroll = sliderRef.current.scrollLeft;
+      const newScroll = direction === 'left' 
+        ? currentScroll - scrollAmount 
+        : currentScroll + scrollAmount;
+      
+      sliderRef.current.scrollTo({
+        left: newScroll,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id="team" className="section-padding bg-gradient-to-b from-background to-secondary/5">
       <div className="max-w-7xl mx-auto">
@@ -57,8 +76,11 @@ const Team = () => {
           </p>
         </div>
 
-        <div className="relative overflow-x-auto pb-8">
-          <div className="flex space-x-6 px-4 py-4 animate-slide-left overflow-x-auto custom-scrollbar snap-x snap-mandatory">
+        <div className="relative">
+          <div 
+            ref={sliderRef}
+            className="flex space-x-6 px-4 py-4 overflow-x-auto custom-scrollbar snap-x snap-mandatory scroll-smooth"
+          >
             {teamMembers.map((member, index) => (
               <Card 
                 key={index} 
@@ -95,6 +117,26 @@ const Team = () => {
               </Card>
             ))}
           </div>
+
+          {/* Navigation Buttons */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10"
+            onClick={() => scroll('left')}
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </Button>
+          
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10"
+            onClick={() => scroll('right')}
+          >
+            <ChevronRight className="h-6 w-6" />
+          </Button>
+
           <div className="absolute left-0 right-0 bottom-0 h-1 bg-gradient-to-r from-primary/5 via-primary/20 to-primary/5 rounded-full" />
         </div>
       </div>
