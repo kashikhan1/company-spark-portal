@@ -1,39 +1,68 @@
-
-import { Card } from './ui/card';
-import { Badge } from './ui/badge';
-import { ExternalLink, Github } from 'lucide-react';
-import { Button } from './ui/button';
+import { Card } from "./ui/card";
+import { Badge } from "./ui/badge";
+import { ExternalLink, Github } from "lucide-react";
+import { Button } from "./ui/button";
 
 const projects = [
   {
-    title: 'E-Commerce Platform',
-    description: 'A modern e-commerce platform built with React and Node.js, featuring real-time inventory management and secure payment processing.',
-    image: 'https://images.unsplash.com/photo-1661956602116-aa6865609028',
-    tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    liveUrl: '#',
-    githubUrl: '#'
+    title: "Zameen Scrapper",
+    description:
+      "A real estate web scraping tool that extracts property listings from Zameen.com and stores them in a database. And serves the data through a REST API.",
+    image: {
+      light: "/projects/scrapper_zameen_homepage.png",
+      dark: "/projects/scrapper_zameen_homepage_dark.png",
+    },
+    tags: ["Cheerio", "React", "Node.js", "Postgres", "Tailwind CSS"],
+    liveUrl: "https://zameen.alisquare.com/",
+    githubUrl:
+      "https://github.com/Muhammad-Abdullah012/scrapper_zameen_backend",
   },
   {
-    title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates, file sharing, and team communication features.',
-    image: 'https://images.unsplash.com/photo-1557426272-fc759fdf7a8d',
-    tags: ['React', 'Firebase', 'Tailwind CSS', 'Redux'],
-    liveUrl: '#',
-    githubUrl: '#'
+    title: "Rider Pro",
+    description:
+      "A role-based logistics platform with car rental features, real-time trip management, and an admin dashboard for tracking KPIs. It includes MQTT-powered notifications, advanced filtering, and analytics for efficient fleet operations.",
+    image: {
+      light: "/projects/ueber-pro-logo.png",
+    },
+    tags: [
+      "PostgreSQL",
+      "Express",
+      "NextJs",
+      "Node.js",
+      "Typescript",
+      "Prisma",
+      "MQTT",
+    ],
+    liveUrl: "",
+    githubUrl: "https://github.com/Muhammad-Abdullah012/ueber-pro",
   },
   {
-    title: 'AI Image Generator',
-    description: 'An AI-powered image generation tool that creates unique artwork based on text descriptions using machine learning.',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad0f5',
-    tags: ['Python', 'TensorFlow', 'React', 'FastAPI'],
-    liveUrl: '#',
-    githubUrl: '#'
-  }
+    title: "Brain Bash",
+    description:
+      "A dynamic quiz platform with customizable question sets, real-time scoring, and user progress tracking. It offers an engaging experience for learning and self-assessment.",
+    image: {
+      light: "/projects/brain-bash-logo.png",
+    },
+    tags: [
+      "PostgreSQL",
+      "Express",
+      "NextJs",
+      "Node.js",
+      "Typescript",
+      "Prisma",
+      "MQTT",
+    ],
+    liveUrl: "",
+    githubUrl: "https://github.com/Muhammad-Abdullah012/brain-bash",
+  },
 ];
 
 const Projects = () => {
   return (
-    <section id="projects" className="section-padding bg-gradient-to-b from-background via-background/50 to-background">
+    <section
+      id="projects"
+      className="section-padding bg-gradient-to-b from-background via-background/50 to-background"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 animate-fade-up">
           <span className="inline-block px-3 py-1 text-sm font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4">
@@ -43,7 +72,8 @@ const Projects = () => {
             Featured Work
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explore our latest projects showcasing innovation and technical excellence.
+            Explore our latest projects showcasing innovation and technical
+            excellence.
           </p>
         </div>
 
@@ -52,31 +82,58 @@ const Projects = () => {
             <Card key={index} className="glass-card group overflow-hidden">
               <div className="aspect-video relative overflow-hidden">
                 <img
-                  src={project.image}
+                  src={project.image.light}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:hidden"
+                />
+                <img
+                  src={project.image.dark || project.image.light}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:block"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground mb-4">{project.description}</p>
+                <p className="text-muted-foreground mb-4">
+                  {project.description}
+                </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, tagIndex) => (
-                    <Badge key={tagIndex} variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
+                    <Badge
+                      key={tagIndex}
+                      variant="secondary"
+                      className="bg-primary/10 text-primary hover:bg-primary/20"
+                    >
                       {tag}
                     </Badge>
                   ))}
                 </div>
                 <div className="flex gap-4">
-                  <Button variant="outline" size="sm" className="flex items-center gap-2">
-                    <ExternalLink className="h-4 w-4" />
-                    Live Demo
-                  </Button>
-                  <Button variant="outline" size="sm" className="flex items-center gap-2">
-                    <Github className="h-4 w-4" />
-                    Source Code
-                  </Button>
+                  {project.liveUrl ? (
+                    <a
+                      target="_blank"
+                      href={project.liveUrl}
+                      className="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      Live Demo
+                    </a>
+                  ) : (
+                    <></>
+                  )}
+                  {project.githubUrl ? (
+                    <a
+                      target="_blank"
+                      href={project.githubUrl}
+                      className="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2"
+                    >
+                      <Github className="h-4 w-4" />
+                      Source Code
+                    </a>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               </div>
             </Card>
