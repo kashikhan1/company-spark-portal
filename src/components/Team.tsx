@@ -48,7 +48,7 @@ const Team = () => {
 
   const scroll = (direction: 'left' | 'right') => {
     if (sliderRef.current) {
-      const scrollAmount = 350; // Width of one card
+      const scrollAmount = 350;
       const currentScroll = sliderRef.current.scrollLeft;
       const newScroll = direction === 'left' 
         ? currentScroll - scrollAmount 
@@ -62,8 +62,22 @@ const Team = () => {
   };
 
   return (
-    <section id="team" className="section-padding bg-gradient-to-b from-background to-secondary/5">
-      <div className="max-w-7xl mx-auto">
+    <section id="team" className="section-padding relative bg-gradient-to-b from-background to-secondary/5 overflow-hidden">
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-10"
+        >
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-white-abstract-moving-lines-on-black-background-48160-large.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background/80" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16 animate-fade-up">
           <span className="inline-block px-3 py-1 text-sm font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4">
             Our Team
@@ -93,23 +107,22 @@ const Team = () => {
                       alt={member.name}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <div className="flex justify-center space-x-4">
-                      <a href="#" className="hover:text-primary transition-colors">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <div className="flex justify-center space-x-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <a href="#" className="text-white hover:text-primary transition-colors">
                         <LinkedinIcon className="h-5 w-5" />
                       </a>
-                      <a href="#" className="hover:text-primary transition-colors">
+                      <a href="#" className="text-white hover:text-primary transition-colors">
                         <TwitterIcon className="h-5 w-5" />
                       </a>
-                      <a href="#" className="hover:text-primary transition-colors">
+                      <a href="#" className="text-white hover:text-primary transition-colors">
                         <GithubIcon className="h-5 w-5" />
                       </a>
                     </div>
                   </div>
                 </div>
-                <div className="p-6 text-center">
+                <div className="p-6 text-center relative z-10">
                   <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
                   <p className="text-primary/80 dark:text-primary/60 font-medium mb-3">{member.role}</p>
                   <p className="text-muted-foreground">{member.bio}</p>
@@ -118,7 +131,6 @@ const Team = () => {
             ))}
           </div>
 
-          {/* Navigation Buttons */}
           <Button
             variant="ghost"
             size="icon"

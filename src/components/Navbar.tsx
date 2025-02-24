@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from './ui/button';
@@ -43,7 +42,6 @@ const Navbar = () => {
               <a href="#services" className="hover:text-gray-600 dark:hover:text-gray-300 px-3 py-2 transition-colors">Services</a>
               <a href="#team" className="hover:text-gray-600 dark:hover:text-gray-300 px-3 py-2 transition-colors">Team</a>
               <a href="#contact" className="hover:text-gray-600 dark:hover:text-gray-300 px-3 py-2 transition-colors">Contact</a>
-              <Button variant="outline" className="ml-4">Get Started</Button>
               <Button
                 variant="ghost"
                 size="icon"
@@ -81,7 +79,6 @@ const Navbar = () => {
           <a href="#services" className="block px-3 py-2 text-base font-medium hover:text-gray-600 dark:hover:text-gray-300">Services</a>
           <a href="#team" className="block px-3 py-2 text-base font-medium hover:text-gray-600 dark:hover:text-gray-300">Team</a>
           <a href="#contact" className="block px-3 py-2 text-base font-medium hover:text-gray-600 dark:hover:text-gray-300">Contact</a>
-          <Button variant="outline" className="w-full mt-4">Get Started</Button>
         </div>
       </div>
     </nav>
