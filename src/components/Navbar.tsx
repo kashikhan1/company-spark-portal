@@ -39,7 +39,7 @@ const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               <a href="#home" className="hover:text-gray-600 dark:hover:text-gray-300 px-3 py-2 transition-colors">Home</a>
-              <a href="#about" className="hover:text-gray-600 dark:hover:text-gray-300 px-3 py-2 transition-colors">About</a>
+              <a href="#projects" className="hover:text-gray-600 dark:hover:text-gray-300 px-3 py-2 transition-colors">Projects</a>
               <a href="#services" className="hover:text-gray-600 dark:hover:text-gray-300 px-3 py-2 transition-colors">Services</a>
               <a href="#team" className="hover:text-gray-600 dark:hover:text-gray-300 px-3 py-2 transition-colors">Team</a>
               <a href="#contact" className="hover:text-gray-600 dark:hover:text-gray-300 px-3 py-2 transition-colors">Contact</a>
@@ -77,7 +77,7 @@ const Navbar = () => {
       <div className={`${isOpen ? 'block' : 'hidden'} md:hidden bg-background/90 backdrop-blur-sm`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
           <a href="#home" className="block px-3 py-2 text-base font-medium hover:text-gray-600 dark:hover:text-gray-300">Home</a>
-          <a href="#about" className="block px-3 py-2 text-base font-medium hover:text-gray-600 dark:hover:text-gray-300">About</a>
+          <a href="#projects" className="block px-3 py-2 text-base font-medium hover:text-gray-600 dark:hover:text-gray-300">Projects</a>
           <a href="#services" className="block px-3 py-2 text-base font-medium hover:text-gray-600 dark:hover:text-gray-300">Services</a>
           <a href="#team" className="block px-3 py-2 text-base font-medium hover:text-gray-600 dark:hover:text-gray-300">Team</a>
           <a href="#contact" className="block px-3 py-2 text-base font-medium hover:text-gray-600 dark:hover:text-gray-300">Contact</a>
