@@ -8,7 +8,7 @@ const Contact = () => {
     <section id="contact" className="section-padding">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 text-sm font-semibold bg-gray-100 rounded-full mb-4">
+          <span className="inline-block px-3 py-1 text-sm font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4">
             Get in Touch
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
