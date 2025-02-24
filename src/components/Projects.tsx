@@ -2,8 +2,34 @@ import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "./ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
-const projects = [
+const individualProjects = [
+  {
+    title: "AI Image Generator",
+    description:
+      "An AI-powered image generation tool that creates unique artwork based on text descriptions using machine learning.",
+    image: {
+      light: "https://images.unsplash.com/photo-1677442136019-21780ecad0f5",
+    },
+    tags: ["Python", "TensorFlow", "React", "FastAPI"],
+    liveUrl: "#",
+    githubUrl: "#",
+  },
+  {
+    title: "Personal Portfolio",
+    description:
+      "A modern portfolio website showcasing individual projects and skills with a dynamic theme switcher.",
+    image: {
+      light: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
+    },
+    tags: ["React", "Tailwind CSS", "TypeScript", "Next.js"],
+    liveUrl: "#",
+    githubUrl: "#",
+  },
+];
+
+const startupProjects = [
   {
     title: "Zameen Scrapper",
     description:
@@ -57,6 +83,57 @@ const projects = [
   },
 ];
 
+const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => (
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+    {projects.map((project, index) => (
+      <Card key={index} className="glass-card group overflow-hidden">
+        <div className="aspect-video relative overflow-hidden">
+          <img
+            src={project.image.light}
+            alt={project.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:hidden"
+          />
+          <img
+            src={project.image.dark || project.image.light}
+            alt={project.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:block"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </div>
+        <div className="p-6">
+          <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+          <p className="text-muted-foreground mb-4">{project.description}</p>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.tags.map((tag, tagIndex) => (
+              <Badge
+                key={tagIndex}
+                variant="secondary"
+                className="bg-primary/10 text-primary hover:bg-primary/20"
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
+          <div className="flex gap-4">
+            {project.liveUrl ? (
+              <a
+                target="_blank"
+                href={project.liveUrl}
+                className="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2"
+              >
+                <ExternalLink className="h-4 w-4" />
+                Live Demo
+              </a>
+            ) : (
+              <></>
+            )}
+          </div>
+        </div>
+      </Card>
+    ))}
+  </div>
+);
+
 const Projects = () => {
   return (
     <section
@@ -75,69 +152,19 @@ const Projects = () => {
             Explore our latest projects showcasing innovation and technical
             excellence.
           </p>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
-          {projects.map((project, index) => (
-            <Card key={index} className="glass-card group overflow-hidden">
-              <div className="aspect-video relative overflow-hidden">
-                <img
-                  src={project.image.light}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:hidden"
-                />
-                <img
-                  src={project.image.dark || project.image.light}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:block"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground mb-4">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, tagIndex) => (
-                    <Badge
-                      key={tagIndex}
-                      variant="secondary"
-                      className="bg-primary/10 text-primary hover:bg-primary/20"
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex gap-4">
-                  {project.liveUrl ? (
-                    <a
-                      target="_blank"
-                      href={project.liveUrl}
-                      className="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                      Live Demo
-                    </a>
-                  ) : (
-                    <></>
-                  )}
-                  {project.githubUrl ? (
-                    <a
-                      target="_blank"
-                      href={project.githubUrl}
-                      className="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2"
-                    >
-                      <Github className="h-4 w-4" />
-                      Source Code
-                    </a>
-                  ) : (
-                    <></>
-                  )}
-                </div>
-              </div>
-            </Card>
-          ))}
+          <Tabs defaultValue="startup" className="w-full max-w-3xl mx-auto">
+            <TabsList className="grid w-full grid-cols-2 mb-8">
+              <TabsTrigger value="startup">Startup Projects</TabsTrigger>
+              <TabsTrigger value="individual">Individual Projects</TabsTrigger>
+            </TabsList>
+            <TabsContent value="startup" className="mt-0">
+              <ProjectGrid projects={startupProjects} />
+            </TabsContent>
+            <TabsContent value="individual" className="mt-0">
+              <ProjectGrid projects={individualProjects} />
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
     </section>
