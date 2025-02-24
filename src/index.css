@@ -120,3 +120,7 @@
 .section-padding {
   @apply py-20 px-4 sm:px-6 lg:px-8;
 }
+
+html {
+  scroll-behavior: smooth;
+}
