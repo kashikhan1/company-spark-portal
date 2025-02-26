@@ -4,21 +4,27 @@ import { Card } from './ui/card';
 
 const services = [
   {
-    title: 'Digital Strategy',
-    description: 'Develop comprehensive digital strategies to drive growth and innovation.',
-    features: ['Market Analysis', 'Competitive Research', 'Growth Planning'],
-    image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7',
-  },
-  {
-    title: 'Web Development',
-    description: 'Create stunning, responsive websites that deliver exceptional user experiences.',
-    features: ['Custom Development', 'Responsive Design', 'Performance Optimization'],
+    title: 'Custom Website Development',
+    description: 'We build sleek, high-performance websites tailored for freelancers and small businesses.',
+    features: ['Custom Design', 'SEO-Friendly', 'Mobile Responsive'],
     image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
   },
   {
-    title: 'Brand Identity',
-    description: 'Build compelling brand identities that resonate with your target audience.',
-    features: ['Logo Design', 'Visual Identity', 'Brand Guidelines'],
+    title: 'Startup Software Solutions',
+    description: 'End-to-end software solutions to help startups scale and thrive in the digital world.',
+    features: ['MVP Development', 'Scalable Architecture', 'Third-Party Integrations'],
+    image: 'https://images.unsplash.com/photo-1522252234503-e356532cafd5',
+  },
+  {
+    title: 'Technical Consultation & Strategy',
+    description: 'Get expert guidance on technology choices, digital strategies, and product development.',
+    features: ['Market Research', 'Tech Stack Selection', 'Growth Planning'],
+    image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7',
+  },
+  {
+    title: 'Branding & Digital Identity',
+    description: 'Craft a compelling brand identity that stands out in a crowded marketplace.',
+    features: ['Logo & Visual Design', 'Brand Guidelines', 'Consistent Digital Presence'],
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158',
   },
 ];

@@ -6,25 +6,58 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
 const individualProjects = [
   {
-    title: "AI Image Generator",
+    title: "Website for Andrea Silato",
     description:
-      "An AI-powered image generation tool that creates unique artwork based on text descriptions using machine learning.",
+      "A modern website showcasing projects and services with a dynamic theme and language switcher.",
     image: {
-      light: "https://images.unsplash.com/photo-1677442136019-21780ecad0f5",
+      light: "/projects/Andrea_Silato_studio_website.png",
     },
-    tags: ["Python", "TensorFlow", "React", "FastAPI"],
-    liveUrl: "#",
+    tags: ["React", "Tailwind CSS", "TypeScript"],
+    liveUrl: "https://studio.weinnovate.net/",
     githubUrl: "#",
   },
   {
-    title: "Personal Portfolio",
+    title: "Personal Portfolio for Dr. Muhammad Ahsan Iqbal",
     description:
       "A modern portfolio website showcasing individual projects and skills with a dynamic theme switcher.",
     image: {
-      light: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
+      light: "/projects/Dr_Ahsan_Iqbal_personal_portfolio.png",
     },
-    tags: ["React", "Tailwind CSS", "TypeScript", "Next.js"],
-    liveUrl: "#",
+    tags: ["Svelte", "Tailwind CSS", "TypeScript"],
+    liveUrl: "https://ahsaniqbal.weinnovate.net/",
+    githubUrl: "#",
+  },
+  {
+    title: "Personal Portfolio for Kashif Khan",
+    description:
+      "A modern portfolio website showcasing individual projects and skills.",
+    image: {
+      light: "/projects/Kashif_Khan_personal_portfolio.png",
+    },
+    tags: ["Tailwind CSS", "TypeScript", "Next.js"],
+    liveUrl: "https://kashif.weinnovate.net/",
+    githubUrl: "#",
+  },
+  {
+    title: "Personal Portfolio for Asim Ghaffar",
+    description:
+      "A modern portfolio website showcasing individual projects and skills.",
+    image: {
+      light: "/projects/Asim_Ghaffar_personal_portfolio.png",
+    },
+    tags: ["React", "Tailwind CSS", "TypeScript"],
+    liveUrl: "https://asim.weinnovate.net",
+    githubUrl: "#",
+  },
+  {
+    title: "Personal Portfolio for Muhammad Abdullah",
+    description:
+      "A modern portfolio website showcasing individual projects and skills.",
+    image: {
+      light: "/projects/Muhammad_Abdullah_personal_portfolio.png",
+    },
+    tags: ["Svelte", "Tailwind CSS", "TypeScript"],
+    liveUrl: "https://abdullah.weinnovate.net",
     githubUrl: "#",
   },
 ];
@@ -153,7 +186,7 @@ const Projects = () => {
             excellence.
           </p>
 
-          <Tabs defaultValue="startup" className="w-full max-w-3xl mx-auto">
+          <Tabs defaultValue="startup" className="w-full max-w-7xl mx-auto">
             <TabsList className="grid w-full grid-cols-2 mb-8">
               <TabsTrigger value="startup">Startup Projects</TabsTrigger>
               <TabsTrigger value="individual">Individual Projects</TabsTrigger>
