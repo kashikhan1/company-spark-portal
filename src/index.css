@@ -143,3 +143,21 @@ html {
     transform: rotate(360deg);
   }
 }
+
+/* Infinite horizontal scroll animation */
+.animate-scroll-x {
+  animation: scroll-x 50s linear infinite;
+}
+
+.animate-scroll-x:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

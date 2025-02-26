@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
 const individualProjects = [
   {
-    title: "Simple Website",
+    title: "Simple User-Friendly Website",
     description:
       "A modern website showcasing projects and services with a dynamic theme and language switcher.",
     image: {
@@ -17,7 +17,7 @@ const individualProjects = [
     githubUrl: "#",
   },
   {
-    title: "Professional Portfolio",
+    title: "Innovative Professional Portfolio",
     description:
       "A modern portfolio website showcasing individual projects and skills with a dynamic theme switcher.",
     image: {
@@ -116,56 +116,54 @@ const startupProjects = [
   },
 ];
 
-const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
-    {projects.map((project, index) => (
-      <Card key={index} className="glass-card group overflow-hidden">
-        <div className="aspect-video relative overflow-hidden">
-          <img
-            src={project.image.light}
-            alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:hidden"
-          />
-          <img
-            src={project.image.dark || project.image.light}
-            alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:block"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </div>
-        <div className="p-6">
-          <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-          <p className="text-muted-foreground mb-4 text-justify">{project.description}</p>
-          {/* <div className="flex flex-wrap gap-2 mb-4">
-            {project.tags.map((tag, tagIndex) => (
-              <Badge
-                key={tagIndex}
-                variant="secondary"
-                className="bg-primary/10 text-primary hover:bg-primary/20"
-              >
-                {tag}
-              </Badge>
-            ))}
-          </div> */}
-          <div className="flex justify-center">
-            {project.liveUrl ? (
-              <a
-                target="_blank"
-                href={project.liveUrl}
-                className="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2"
-              >
-                <ExternalLink className="h-4 w-4" />
-                Live Demo
-              </a>
-            ) : (
-              <></>
-            )}
+const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
+  // Duplicate the projects array to ensure seamless looping
+  const duplicatedProjects = [...projects, ...projects, ...projects];
+
+  return (
+    <div className="overflow-hidden flex relative">
+      {/* Inner container for the scrolling animation */}
+      <div className="animate-scroll-x flex gap-8">
+        {duplicatedProjects.map((project, index) => (
+          <div
+            key={index}
+            className="inline-block glass-card group overflow-hidden w-[300px] shrink-0"
+          >
+            <div className="aspect-video relative overflow-hidden">
+              <img
+                src={project.image.light}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:hidden"
+              />
+              <img
+                src={project.image.dark || project.image.light}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:block"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+              <p className="text-muted-foreground mb-4 text-justify hyphens-auto">{project.description}</p>
+              <div className="flex justify-center">
+                {project.liveUrl ? (
+                  <a
+                    target="_blank"
+                    href={project.liveUrl}
+                    className="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Live Demo
+                  </a>
+                ) : null}
+              </div>
+            </div>
           </div>
-        </div>
-      </Card>
-    ))}
-  </div>
-);
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const Projects = () => {
   return (
@@ -186,7 +184,7 @@ const Projects = () => {
             excellence.
           </p>
 
-          <Tabs defaultValue="startup" className="w-full max-w-7xl mx-auto">
+          <Tabs defaultValue="startup" className="w-full max-w-7xl mx-auto mt-4">
             <TabsList className="grid w-full grid-cols-2 mb-8">
               <TabsTrigger value="startup">Startup Projects</TabsTrigger>
               <TabsTrigger value="individual">Individual Projects</TabsTrigger>
