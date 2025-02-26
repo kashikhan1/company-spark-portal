@@ -53,7 +53,7 @@ const Contact = () => {
         </div>
 
         <div className="max-w-2xl mx-auto">
-          <form className="space-y-6" ref={formRef} onSubmit={handleSubmit}>
+          <form className="space-y-6 flex flex-col" ref={formRef} onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label
@@ -122,7 +122,7 @@ const Contact = () => {
               type="submit"
               className="w-full sm:w-auto"
             >
-              {isSending ? <div className="w-[92px]"><span className="loader"></span></div>: "Send Message"}
+              {isSending ? <span className="loader"></span>: "Send Message"}
             </Button>
           </form>
         </div>
