@@ -152,7 +152,7 @@ const Team = () => {
                   <p className="text-primary/80 dark:text-primary/60 font-medium mb-3">
                     {member.role}
                   </p>
-                  <p className="text-muted-foreground">{member.bio}</p>
+                  <p className="text-muted-foreground text-justify">{member.bio}</p>
                 </div>
               </Card>
             ))}

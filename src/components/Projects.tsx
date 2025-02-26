@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
 const individualProjects = [
   {
-    title: "Website for Andrea Silato",
+    title: "Simple Website",
     description:
       "A modern website showcasing projects and services with a dynamic theme and language switcher.",
     image: {
@@ -17,7 +17,7 @@ const individualProjects = [
     githubUrl: "#",
   },
   {
-    title: "Personal Portfolio for Dr. Muhammad Ahsan Iqbal",
+    title: "Professional Portfolio",
     description:
       "A modern portfolio website showcasing individual projects and skills with a dynamic theme switcher.",
     image: {
@@ -28,7 +28,7 @@ const individualProjects = [
     githubUrl: "#",
   },
   {
-    title: "Personal Portfolio for Kashif Khan",
+    title: "Full Stack Developer Portfolio",
     description:
       "A modern portfolio website showcasing individual projects and skills.",
     image: {
@@ -39,9 +39,9 @@ const individualProjects = [
     githubUrl: "#",
   },
   {
-    title: "Personal Portfolio for Asim Ghaffar",
+    title: "Frontend Developer Portfolio",
     description:
-      "A modern portfolio website showcasing individual projects and skills.",
+      "A sleek online portfolio displaying individual work and professional abilities.",
     image: {
       light: "/projects/Asim_Ghaffar_personal_portfolio.png",
     },
@@ -50,9 +50,9 @@ const individualProjects = [
     githubUrl: "#",
   },
   {
-    title: "Personal Portfolio for Muhammad Abdullah",
+    title: "Backend Developer Portfolio",
     description:
-      "A modern portfolio website showcasing individual projects and skills.",
+      "A contemporary portfolio site highlighting personal projects and expertise.",
     image: {
       light: "/projects/Muhammad_Abdullah_personal_portfolio.png",
     },
@@ -135,8 +135,8 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => (
         </div>
         <div className="p-6">
           <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-          <p className="text-muted-foreground mb-4">{project.description}</p>
-          <div className="flex flex-wrap gap-2 mb-4">
+          <p className="text-muted-foreground mb-4 text-justify">{project.description}</p>
+          {/* <div className="flex flex-wrap gap-2 mb-4">
             {project.tags.map((tag, tagIndex) => (
               <Badge
                 key={tagIndex}
@@ -146,8 +146,8 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => (
                 {tag}
               </Badge>
             ))}
-          </div>
-          <div className="flex gap-4">
+          </div> */}
+          <div className="flex justify-center">
             {project.liveUrl ? (
               <a
                 target="_blank"
