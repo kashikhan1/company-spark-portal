@@ -1,97 +1,176 @@
-
-import { Card } from './ui/card';
-import { Badge } from './ui/badge';
-import { ExternalLink, Github } from 'lucide-react';
-import { Button } from './ui/button';
+import { Card } from "./ui/card";
+import { Badge } from "./ui/badge";
+import { ExternalLink, Github } from "lucide-react";
+import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
 const individualProjects = [
   {
-    title: 'AI Image Generator',
-    description: 'An AI-powered image generation tool that creates unique artwork based on text descriptions using machine learning.',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad0f5',
-    tags: ['Python', 'TensorFlow', 'React', 'FastAPI'],
-    liveUrl: '#',
-    githubUrl: '#'
+    title: "Simple User-Friendly Website",
+    description:
+      "A modern website showcasing projects and services with a dynamic theme and language switcher.",
+    image: {
+      light: "/projects/Andrea_Silato_studio_website.png",
+    },
+    tags: ["React", "Tailwind CSS", "TypeScript"],
+    liveUrl: "https://studio.weinnovate.net/",
+    githubUrl: "#",
   },
   {
-    title: 'Personal Portfolio',
-    description: 'A modern portfolio website showcasing individual projects and skills with a dynamic theme switcher.',
-    image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7',
-    tags: ['React', 'Tailwind CSS', 'TypeScript', 'Next.js'],
-    liveUrl: '#',
-    githubUrl: '#'
-  }
+    title: "Innovative Professional Portfolio",
+    description:
+      "A modern portfolio website showcasing individual projects and skills with a dynamic theme switcher.",
+    image: {
+      light: "/projects/Dr_Ahsan_Iqbal_personal_portfolio.png",
+    },
+    tags: ["Svelte", "Tailwind CSS", "TypeScript"],
+    liveUrl: "https://ahsaniqbal.weinnovate.net/",
+    githubUrl: "#",
+  },
+  {
+    title: "Full Stack Developer Portfolio",
+    description:
+      "A modern portfolio website showcasing individual projects and skills.",
+    image: {
+      light: "/projects/Kashif_Khan_personal_portfolio.png",
+    },
+    tags: ["Tailwind CSS", "TypeScript", "Next.js"],
+    liveUrl: "https://kashif.weinnovate.net/",
+    githubUrl: "#",
+  },
+  {
+    title: "Frontend Developer Portfolio",
+    description:
+      "A sleek online portfolio displaying individual work and professional abilities.",
+    image: {
+      light: "/projects/Asim_Ghaffar_personal_portfolio.png",
+    },
+    tags: ["React", "Tailwind CSS", "TypeScript"],
+    liveUrl: "https://asim.weinnovate.net",
+    githubUrl: "#",
+  },
+  {
+    title: "Backend Developer Portfolio",
+    description:
+      "A contemporary portfolio site highlighting personal projects and expertise.",
+    image: {
+      light: "/projects/Muhammad_Abdullah_personal_portfolio.png",
+    },
+    tags: ["Svelte", "Tailwind CSS", "TypeScript"],
+    liveUrl: "https://abdullah.weinnovate.net",
+    githubUrl: "#",
+  },
 ];
 
 const startupProjects = [
   {
-    title: 'E-Commerce Platform',
-    description: 'A modern e-commerce platform built with React and Node.js, featuring real-time inventory management and secure payment processing.',
-    image: 'https://images.unsplash.com/photo-1661956602116-aa6865609028',
-    tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    liveUrl: '#',
-    githubUrl: '#'
+    title: "Zameen Scrapper",
+    description:
+      "A real estate web scraping tool that extracts property listings from Zameen.com and stores them in a database. And serves the data through a REST API.",
+    image: {
+      light: "/projects/scrapper_zameen_homepage.png",
+      dark: "/projects/scrapper_zameen_homepage_dark.png",
+    },
+    tags: ["Cheerio", "React", "Node.js", "Postgres", "Tailwind CSS"],
+    liveUrl: "https://zameen.alisquare.com/",
+    githubUrl:
+      "https://github.com/Muhammad-Abdullah012/scrapper_zameen_backend",
   },
   {
-    title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates, file sharing, and team communication features.',
-    image: 'https://images.unsplash.com/photo-1557426272-fc759fdf7a8d',
-    tags: ['React', 'Firebase', 'Tailwind CSS', 'Redux'],
-    liveUrl: '#',
-    githubUrl: '#'
+    title: "Rider Pro",
+    description:
+      "A role-based logistics platform with car rental features, real-time trip management, and an admin dashboard for tracking KPIs. It includes MQTT-powered notifications, advanced filtering, and analytics for efficient fleet operations.",
+    image: {
+      light: "/projects/ueber-pro-logo.png",
+    },
+    tags: [
+      "PostgreSQL",
+      "Express",
+      "NextJs",
+      "Node.js",
+      "Typescript",
+      "Prisma",
+      "MQTT",
+    ],
+    liveUrl: "",
+    githubUrl: "https://github.com/Muhammad-Abdullah012/ueber-pro",
   },
   {
-    title: 'Team Collaboration Tool',
-    description: 'Enterprise-level collaboration platform with video conferencing and document sharing capabilities.',
-    image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81',
-    tags: ['React', 'WebRTC', 'Socket.io', 'MongoDB'],
-    liveUrl: '#',
-    githubUrl: '#'
-  }
+    title: "Brain Bash",
+    description:
+      "A dynamic quiz platform with customizable question sets, real-time scoring, and user progress tracking. It offers an engaging experience for learning and self-assessment.",
+    image: {
+      light: "/projects/brain-bash-logo.png",
+    },
+    tags: [
+      "PostgreSQL",
+      "Express",
+      "NextJs",
+      "Node.js",
+      "Typescript",
+      "Prisma",
+      "MQTT",
+    ],
+    liveUrl: "",
+    githubUrl: "https://github.com/Muhammad-Abdullah012/brain-bash",
+  },
 ];
 
-const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
-    {projects.map((project, index) => (
-      <Card key={index} className="glass-card group overflow-hidden">
-        <div className="aspect-video relative overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </div>
-        <div className="p-6">
-          <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-          <p className="text-muted-foreground mb-4">{project.description}</p>
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.tags.map((tag, tagIndex) => (
-              <Badge key={tagIndex} variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
-                {tag}
-              </Badge>
-            ))}
+const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
+  // Duplicate the projects array to ensure seamless looping
+  const duplicatedProjects = [...projects, ...projects, ...projects];
+
+  return (
+    <div className="overflow-hidden flex relative">
+      {/* Inner container for the scrolling animation */}
+      <div className="animate-scroll-x flex gap-8">
+        {duplicatedProjects.map((project, index) => (
+          <div
+            key={index}
+            className="inline-block glass-card group overflow-hidden w-[300px] shrink-0"
+          >
+            <div className="aspect-video relative overflow-hidden">
+              <img
+                src={project.image.light}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:hidden"
+              />
+              <img
+                src={project.image.dark || project.image.light}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:block"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+              <p className="text-muted-foreground mb-4 text-justify hyphens-auto">{project.description}</p>
+              <div className="flex justify-center">
+                {project.liveUrl ? (
+                  <a
+                    target="_blank"
+                    href={project.liveUrl}
+                    className="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Live Demo
+                  </a>
+                ) : null}
+              </div>
+            </div>
           </div>
-          <div className="flex gap-4">
-            <Button variant="outline" size="sm" className="flex items-center gap-2">
-              <ExternalLink className="h-4 w-4" />
-              Live Demo
-            </Button>
-            <Button variant="outline" size="sm" className="flex items-center gap-2">
-              <Github className="h-4 w-4" />
-              Source Code
-            </Button>
-          </div>
-        </div>
-      </Card>
-    ))}
-  </div>
-);
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const Projects = () => {
   return (
-    <section id="projects" className="section-padding bg-gradient-to-b from-background via-background/50 to-background">
+    <section
+      id="projects"
+      className="section-padding bg-gradient-to-b from-background via-background/50 to-background"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 animate-fade-up">
           <span className="inline-block px-3 py-1 text-sm font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4">
@@ -100,11 +179,12 @@ const Projects = () => {
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
             Featured Work
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-            Explore our latest projects showcasing innovation and technical excellence.
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Explore our latest projects showcasing innovation and technical
+            excellence.
           </p>
 
-          <Tabs defaultValue="startup" className="w-full max-w-3xl mx-auto">
+          <Tabs defaultValue="startup" className="w-full max-w-7xl mx-auto mt-4">
             <TabsList className="grid w-full grid-cols-2 mb-8">
               <TabsTrigger value="startup">Startup Projects</TabsTrigger>
               <TabsTrigger value="individual">Individual Projects</TabsTrigger>
