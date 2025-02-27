@@ -65,7 +65,7 @@ const Services = () => {
     <section id="services" className="section-padding bg-secondary/50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 text-sm font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4">
+          <span className="inline-block px-3 py-1 text-sm md:text-md font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4 select-none">
             Our Services
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">

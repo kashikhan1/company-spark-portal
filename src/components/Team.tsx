@@ -91,7 +91,7 @@ const Team = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16 animate-fade-up">
-          <span className="inline-block px-3 py-1 text-sm font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4">
+          <span className="inline-block px-3 py-1 text-sm md:text-md font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4 select-none">
             Our Team
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">

@@ -19,7 +19,7 @@ const Hero = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="text-center">
-          <span className="inline-block animate-fade-down px-3 py-1 text-sm font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4">
+          <span className="inline-block animate-fade-down px-3 py-1 text-sm md:text-md font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4 select-none">
             Innovate with Purpose
           </span>
 
