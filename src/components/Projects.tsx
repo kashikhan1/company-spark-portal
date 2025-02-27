@@ -1,8 +1,8 @@
 import { Card } from "./ui/card";
-import { Badge } from "./ui/badge";
-import { ExternalLink, Github } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { useRef } from "react";
 
 const individualProjects = [
   {
@@ -117,17 +117,34 @@ const startupProjects = [
 ];
 
 const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
-  // Duplicate the projects array to ensure seamless looping
-  const duplicatedProjects = [...projects, ...projects, ...projects];
+  const sliderRef = useRef<HTMLDivElement>(null);
 
+  const scroll = (direction: "left" | "right") => {
+    if (sliderRef.current) {
+      const scrollAmount = 350;
+      const currentScroll = sliderRef.current.scrollLeft;
+      const newScroll =
+        direction === "left"
+          ? currentScroll - scrollAmount
+          : currentScroll + scrollAmount;
+
+      sliderRef.current.scrollTo({
+        left: newScroll,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
-    <div className="overflow-hidden flex relative">
+    <div className="relative">
       {/* Inner container for the scrolling animation */}
-      <div className="animate-scroll-x flex gap-8">
-        {duplicatedProjects.map((project, index) => (
-          <div
+      <div
+        ref={sliderRef}
+        className="flex gap-8 px-4 py-4 overflow-x-auto custom-scrollbar snap-x snap-mandatory scroll-smooth"
+      >
+        {projects.map((project, index) => (
+          <Card
             key={index}
-            className="inline-block glass-card group overflow-hidden w-[300px] shrink-0"
+            className="glass-card flex-none w-[300px] md:w-[350px] snap-center transform hover:scale-105 transition-all duration-300"
           >
             <div className="aspect-video relative overflow-hidden">
               <img
@@ -144,7 +161,9 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
             </div>
             <div className="p-6">
               <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-              <p className="text-muted-foreground mb-4 text-justify hyphens-auto">{project.description}</p>
+              <p className="text-muted-foreground mb-4 text-justify hyphens-auto">
+                {project.description}
+              </p>
               <div className="flex justify-center">
                 {project.liveUrl ? (
                   <a
@@ -158,9 +177,31 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
                 ) : null}
               </div>
             </div>
-          </div>
+          </Card>
         ))}
       </div>
+      {/* Left Navigation Button */}
+      <Button
+        variant="ghost"
+        size="icon"
+        className="absolute left-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10"
+        onClick={() => scroll("left")}
+      >
+        <ChevronLeft className="h-6 w-6" />
+      </Button>
+
+      {/* Right Navigation Button */}
+      <Button
+        variant="ghost"
+        size="icon"
+        className="absolute right-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10"
+        onClick={() => scroll("right")}
+      >
+        <ChevronRight className="h-6 w-6" />
+      </Button>
+
+      {/* Bottom Gradient Indicator */}
+      <div className="absolute left-0 right-0 bottom-0 h-1 bg-gradient-to-r from-primary/5 via-primary/20 to-primary/5 rounded-full" />
     </div>
   );
 };
@@ -184,7 +225,10 @@ const Projects = () => {
             excellence.
           </p>
 
-          <Tabs defaultValue="startup" className="w-full max-w-7xl mx-auto mt-4">
+          <Tabs
+            defaultValue="startup"
+            className="w-full max-w-7xl mx-auto mt-4"
+          >
             <TabsList className="grid w-full grid-cols-2 mb-8">
               <TabsTrigger value="startup">Startup Projects</TabsTrigger>
               <TabsTrigger value="individual">Individual Projects</TabsTrigger>
