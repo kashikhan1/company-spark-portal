@@ -2,7 +2,7 @@ import { Card } from "./ui/card";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const individualProjects = [
   {
@@ -117,11 +117,15 @@ const startupProjects = [
 ];
 
 const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
+  const [isContentScrollable, setIsContentScrollable] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
     if (sliderRef.current) {
-      const scrollAmount = 350;
+      const firstCard = sliderRef.current.querySelector(".snap-center");
+      const scrollAmount = firstCard ? firstCard.clientWidth : 350;
       const currentScroll = sliderRef.current.scrollLeft;
       const newScroll =
         direction === "left"
@@ -134,17 +138,51 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
       });
     }
   };
+
+  useEffect(() => {
+    if (!sliderRef.current) return;
+
+    const updateScrollState = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current!;
+      setIsContentScrollable(scrollWidth > clientWidth);
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
+    };
+
+    // Initial update
+    updateScrollState();
+
+    // Add event listener for scroll events
+    const slider = sliderRef.current;
+    slider.addEventListener("scroll", updateScrollState);
+
+    return () => {
+      slider.removeEventListener("scroll", updateScrollState);
+    };
+  }, [projects]);
+
   return (
     <div className="relative">
       {/* Inner container for the scrolling animation */}
       <div
         ref={sliderRef}
+        role="region"
+        aria-label="Project Grid"
         className="flex gap-8 px-4 py-4 overflow-x-auto custom-scrollbar snap-x snap-mandatory scroll-smooth"
       >
         {projects.map((project, index) => (
           <Card
             key={index}
-            className="glass-card flex-none w-[300px] md:w-[350px] snap-center transform hover:scale-105 transition-all duration-300"
+            className={`glass-card flex-none w-[300px] md:w-[350px] snap-center transform hover:scale-105 transition-all duration-300 ${
+              project.liveUrl ? "cursor-pointer" : ""
+            }`}
+            onClick={() => {
+              if (project.liveUrl) {
+                window.open(project.liveUrl, "_blank");
+              }
+            }}
+            role={project.liveUrl ? "link" : undefined}
+            aria-label={project.liveUrl ? `Visit ${project.title}` : undefined}
           >
             <div className="aspect-video relative overflow-hidden">
               <img
@@ -164,18 +202,6 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
               <p className="text-muted-foreground mb-4 text-justify hyphens-auto">
                 {project.description}
               </p>
-              <div className="flex justify-center">
-                {project.liveUrl ? (
-                  <a
-                    target="_blank"
-                    href={project.liveUrl}
-                    className="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    Live Demo
-                  </a>
-                ) : null}
-              </div>
             </div>
           </Card>
         ))}
@@ -184,8 +210,11 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute left-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10"
+        className={`absolute left-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10 ${
+          !isContentScrollable || !canScrollLeft ? "hidden" : ""
+        }`}
         onClick={() => scroll("left")}
+        aria-label="Scroll left"
       >
         <ChevronLeft className="h-6 w-6" />
       </Button>
@@ -194,14 +223,14 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute right-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10"
+        className={`absolute right-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10 ${
+          !isContentScrollable || !canScrollRight ? "hidden" : ""
+        }`}
         onClick={() => scroll("right")}
+        aria-label="Scroll right"
       >
         <ChevronRight className="h-6 w-6" />
       </Button>
-
-      {/* Bottom Gradient Indicator */}
-      <div className="absolute left-0 right-0 bottom-0 h-1 bg-gradient-to-r from-primary/5 via-primary/20 to-primary/5 rounded-full" />
     </div>
   );
 };
