@@ -121,6 +121,8 @@ const Services = () => {
             size="icon"
             className="absolute left-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10"
             onClick={() => scroll("left")}
+            aria-label="Scroll left"
+            tabIndex={0}
           >
             <ChevronLeft className="h-6 w-6" />
           </Button>
@@ -131,6 +133,8 @@ const Services = () => {
             size="icon"
             className="absolute right-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10"
             onClick={() => scroll("right")}
+            aria-label="Scroll right"
+            tabIndex={0}
           >
             <ChevronRight className="h-6 w-6" />
           </Button>
