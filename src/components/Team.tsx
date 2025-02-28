@@ -13,11 +13,11 @@ const teamMembers = [
   {
     name: "Muhammad Ali Anjum",
     github: "https://github.com/alianjum0",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/alianjum0/",
     twitter: "#",
     role: "CEO & Founder",
     image: "/team/Ali-Anjum.jpeg",
-    bio: "Visionary leader with over 15 years of experience in tech innovation.",
+    bio: "Visionary CEO & Founder with over 15 years of experience driving technological innovation and business transformation. Passionate about building cutting-edge solutions, I lead with a strategic mindset, fostering growth, and empowering teams to turn bold ideas into impactful realities within the ever-evolving tech landscape.",
   },
   {
     name: "Muhammad Kashif Khan",
@@ -26,7 +26,7 @@ const teamMembers = [
     twitter: "#",
     role: "Tech Lead",
     image: "/team/Kashif-Khan.jpeg",
-    bio: "Highly skilled Senior Full Stack Developer with over 9+ years of experience in designing and developing robust web applications and backend systems.",
+    bio: "Seasoned Tech Lead and Senior Full Stack Developer with over 9 years of experience architecting and delivering high-performance web applications and scalable backend systems. Adept at leading cross-functional teams, driving technical innovation, and implementing best practices to achieve business goals and exceptional user experiences.",
   },
   {
     name: "Asim Ghaffar",
@@ -35,7 +35,7 @@ const teamMembers = [
     twitter: "#",
     role: "Frontend Developer",
     image: "/team/Asim-Ghaffar.jpeg",
-    bio: "Dynamic and detail-oriented Software Engineer with expertise in React.js, Next.js, and JavaScript, TypeScript, seeking to leverage innovative solutions and robust coding practices to contribute to impactful projects and enhance user experiences.",
+    bio: "Creative and meticulous Frontend Developer with a passion for crafting seamless user interfaces using React.js, Next.js, JavaScript, and TypeScript. With a strong focus on detail and innovation, I specialize in building responsive, high-quality solutions that elevate user experiences and deliver measurable impact on cutting-edge projects.",
   },
   {
     name: "Muhammad Abdullah",
@@ -44,7 +44,7 @@ const teamMembers = [
     twitter: "#",
     role: "Full Stack Developer",
     image: "/team/Muhammad-Abdullah.jpeg",
-    bio: "I'm a Full Stack Developer with over 2 years of experience in building web and mobile applications.",
+    bio: "Versatile Full Stack Developer with over 2 years of hands-on experience developing and deploying web and mobile applications. Proficient in both frontend and backend technologies, I thrive on creating efficient, scalable solutions that bridge user needs with robust system performance, consistently delivering value from concept to completion.",
   },
 ];
 
@@ -111,7 +111,7 @@ const Team = () => {
         <div className="relative">
           <div
             ref={sliderRef}
-            className="flex space-x-6 px-4 py-4 overflow-x-auto custom-scrollbar snap-x snap-mandatory scroll-smooth"
+            className="flex space-x-6 px-4 py-4 overflow-x-auto overflow-y-hidden custom-scrollbar snap-x snap-mandatory scroll-smooth"
             aria-label="Team Members"
             tabIndex={0}
             onKeyDown={(e) => {
