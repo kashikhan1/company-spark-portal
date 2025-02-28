@@ -57,7 +57,7 @@ const Team = () => {
       const currentScroll = sliderRef.current.scrollLeft;
       const newScroll =
         direction === "left"
-          ? currentScroll - scrollAmount
+          ? Math.max(currentScroll - scrollAmount, 0)
           : currentScroll + scrollAmount;
 
       sliderRef.current.scrollTo({
@@ -80,6 +80,7 @@ const Team = () => {
           muted
           playsInline
           className="w-full h-full object-cover opacity-10"
+          aria-hidden="true"
         >
           <source
             src="https://assets.mixkit.co/videos/preview/mixkit-white-abstract-moving-lines-on-black-background-48160-large.mp4"
@@ -91,7 +92,11 @@ const Team = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16 animate-fade-up">
-          <span className="inline-block px-3 py-1 text-sm md:text-md font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4 select-none">
+          <span
+            role="status"
+            aria-live="polite"
+            className="inline-block px-3 py-1 text-sm md:text-md font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4 select-none"
+          >
             Our Team
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
@@ -107,17 +112,25 @@ const Team = () => {
           <div
             ref={sliderRef}
             className="flex space-x-6 px-4 py-4 overflow-x-auto custom-scrollbar snap-x snap-mandatory scroll-smooth"
+            aria-label="Team Members"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "ArrowLeft") scroll("left");
+              if (e.key === "ArrowRight") scroll("right");
+            }}
           >
             {teamMembers.map((member, index) => (
               <Card
                 key={index}
+                role="article"
+                aria-labelledby={`team-member-${index}`}
                 className="glass-card flex-none w-[300px] md:w-[350px] snap-center transform hover:scale-105 transition-all duration-300"
               >
                 <div className="relative group">
                   <div className="aspect-square overflow-hidden rounded-t-lg">
                     <img
                       src={member.image}
-                      alt={member.name}
+                      alt={`${member.name}'s profile picture`}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
@@ -126,13 +139,17 @@ const Team = () => {
                       <a
                         href={member.linkedin}
                         target="_blank"
+                        rel="noopener noreferrer"
                         className="text-white hover:text-primary transition-colors"
+                        aria-label={`Visit ${member.name}'s LinkedIn profile`}
                       >
                         <LinkedinIcon className="h-5 w-5" />
                       </a>
                       <a
                         href={member.twitter}
                         target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${member.name}'s Twitter profile`}
                         className="text-white hover:text-primary transition-colors"
                       >
                         <TwitterIcon className="h-5 w-5" />
@@ -140,6 +157,8 @@ const Team = () => {
                       <a
                         href={member.github}
                         target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${member.name}'s GitHub profile`}
                         className="text-white hover:text-primary transition-colors"
                       >
                         <GithubIcon className="h-5 w-5" />
@@ -148,11 +167,18 @@ const Team = () => {
                   </div>
                 </div>
                 <div className="p-6 text-center relative z-10">
-                  <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
+                  <h3
+                    id={`team-member-${index}`}
+                    className="text-xl font-semibold mb-2"
+                  >
+                    {member.name}
+                  </h3>
                   <p className="text-primary/80 dark:text-primary/60 font-medium mb-3">
                     {member.role}
                   </p>
-                  <p className="text-muted-foreground text-justify">{member.bio}</p>
+                  <p className="text-muted-foreground text-justify">
+                    {member.bio}
+                  </p>
                 </div>
               </Card>
             ))}
@@ -163,6 +189,8 @@ const Team = () => {
             size="icon"
             className="absolute left-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10"
             onClick={() => scroll("left")}
+            aria-label="Scroll left"
+            tabIndex={0}
           >
             <ChevronLeft className="h-6 w-6" />
           </Button>
@@ -172,6 +200,8 @@ const Team = () => {
             size="icon"
             className="absolute right-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10"
             onClick={() => scroll("right")}
+            aria-label="Scroll right"
+            tabIndex={0}
           >
             <ChevronRight className="h-6 w-6" />
           </Button>

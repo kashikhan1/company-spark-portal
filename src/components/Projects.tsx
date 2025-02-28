@@ -129,7 +129,7 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
       const currentScroll = sliderRef.current.scrollLeft;
       const newScroll =
         direction === "left"
-          ? currentScroll - scrollAmount
+          ? Math.max(currentScroll - scrollAmount, 0)
           : currentScroll + scrollAmount;
 
       sliderRef.current.scrollTo({
@@ -169,6 +169,11 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
         role="region"
         aria-label="Project Grid"
         className="flex gap-8 px-4 py-4 overflow-x-auto custom-scrollbar snap-x snap-mandatory scroll-smooth"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowLeft") scroll("left");
+          if (e.key === "ArrowRight") scroll("right");
+        }}
       >
         {projects.map((project, index) => (
           <Card
@@ -183,16 +188,22 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
             }}
             role={project.liveUrl ? "link" : undefined}
             aria-label={project.liveUrl ? `Visit ${project.title}` : undefined}
+            tabIndex={project.liveUrl ? 0 : undefined}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && project.liveUrl) {
+                window.open(project.liveUrl, "_blank");
+              }
+            }}
           >
             <div className="aspect-video relative overflow-hidden">
               <img
                 src={project.image.light}
-                alt={project.title}
+                alt={`${project.title} - Light Mode`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:hidden"
               />
               <img
                 src={project.image.dark || project.image.light}
-                alt={project.title}
+                alt={`${project.title} - Dark Mode`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:block"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -215,6 +226,7 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
         }`}
         onClick={() => scroll("left")}
         aria-label="Scroll left"
+        tabIndex={isContentScrollable && canScrollLeft ? 0 : -1}
       >
         <ChevronLeft className="h-6 w-6" />
       </Button>
@@ -228,6 +240,7 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
         }`}
         onClick={() => scroll("right")}
         aria-label="Scroll right"
+        tabIndex={isContentScrollable && canScrollRight ? 0 : -1}
       >
         <ChevronRight className="h-6 w-6" />
       </Button>

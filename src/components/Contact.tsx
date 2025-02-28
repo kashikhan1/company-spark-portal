@@ -37,13 +37,24 @@ const Contact = () => {
       });
   };
   return (
-    <section id="contact" className="section-padding">
+    <section
+      id="contact"
+      className="section-padding"
+      aria-labelledby="contact-heading"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 text-sm md:text-md font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4 select-none">
+          <span
+            className="inline-block px-3 py-1 text-sm md:text-md font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4 select-none"
+            aria-live="polite"
+            role="status"
+          >
             Get in Touch
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2
+            id="contact-heading"
+            className="text-3xl sm:text-4xl font-bold mb-4"
+          >
             Let's Work Together
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
@@ -53,7 +64,16 @@ const Contact = () => {
         </div>
 
         <div className="max-w-2xl mx-auto">
-          <form className="space-y-6 flex flex-col" ref={formRef} onSubmit={handleSubmit}>
+          <form
+            className="space-y-6 flex flex-col"
+            ref={formRef}
+            onSubmit={handleSubmit}
+            aria-describedby="form-instructions"
+          >
+            <p id="form-instructions" className="sr-only">
+              Fill out the form below to send us a message. All fields are
+              required.
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label
@@ -67,6 +87,8 @@ const Contact = () => {
                   name="from_name"
                   placeholder="Your name"
                   required
+                  aria-required="true"
+                  autoComplete="name"
                 />
               </div>
               <div>
@@ -82,6 +104,8 @@ const Contact = () => {
                   name="from_email"
                   placeholder="your@email.com"
                   required
+                  aria-required="true"
+                  autoComplete="email"
                 />
               </div>
             </div>
@@ -98,6 +122,7 @@ const Contact = () => {
                 name="subject"
                 placeholder="How can we help?"
                 required
+                aria-required="true"
               />
             </div>
 
@@ -114,6 +139,7 @@ const Contact = () => {
                 placeholder="Tell us about your project..."
                 rows={6}
                 required
+                aria-required="true"
               />
             </div>
 
@@ -121,8 +147,13 @@ const Contact = () => {
               disabled={isSending}
               type="submit"
               className="w-full sm:w-auto"
+              aria-disabled={isSending}
             >
-              {isSending ? <span className="loader"></span>: "Send Message"}
+              {isSending ? (
+                <span className="loader" aria-hidden="true"></span>
+              ) : (
+                "Send Message"
+              )}
             </Button>
           </form>
         </div>
