@@ -57,7 +57,7 @@ const Contact = () => {
           >
             Let's Work Together
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Have a project in mind? We'd love to hear from you. Get in touch
             with us.
           </p>
