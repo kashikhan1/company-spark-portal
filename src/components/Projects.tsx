@@ -1,8 +1,8 @@
 import { Card } from "./ui/card";
-import { Badge } from "./ui/badge";
-import { ExternalLink, Github } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { useEffect, useRef, useState } from "react";
 
 const individualProjects = [
   {
@@ -117,50 +117,135 @@ const startupProjects = [
 ];
 
 const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
-  // Duplicate the projects array to ensure seamless looping
-  const duplicatedProjects = [...projects, ...projects, ...projects];
+  const [isContentScrollable, setIsContentScrollable] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (sliderRef.current) {
+      const firstCard = sliderRef.current.querySelector(".snap-center");
+      const scrollAmount = firstCard ? firstCard.clientWidth : 350;
+      const currentScroll = sliderRef.current.scrollLeft;
+      const newScroll =
+        direction === "left"
+          ? Math.max(currentScroll - scrollAmount, 0)
+          : currentScroll + scrollAmount;
+
+      sliderRef.current.scrollTo({
+        left: newScroll,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (!sliderRef.current) return;
+
+    const updateScrollState = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current!;
+      setIsContentScrollable(scrollWidth > clientWidth);
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
+    };
+
+    // Initial update
+    updateScrollState();
+
+    // Add event listener for scroll events
+    const slider = sliderRef.current;
+    slider.addEventListener("scroll", updateScrollState);
+
+    return () => {
+      slider.removeEventListener("scroll", updateScrollState);
+    };
+  }, [projects]);
 
   return (
-    <div className="overflow-hidden flex relative">
+    <div className="relative">
       {/* Inner container for the scrolling animation */}
-      <div className="animate-scroll-x flex gap-8">
-        {duplicatedProjects.map((project, index) => (
-          <div
+      <div
+        ref={sliderRef}
+        role="region"
+        aria-label="Project Grid"
+        className="flex gap-8 px-4 py-4 overflow-x-auto custom-scrollbar snap-x snap-mandatory scroll-smooth"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowLeft") scroll("left");
+          if (e.key === "ArrowRight") scroll("right");
+        }}
+      >
+        {projects.map((project, index) => (
+          <Card
             key={index}
-            className="inline-block glass-card group overflow-hidden w-[300px] shrink-0"
+            className={`glass-card flex-none w-[300px] md:w-[350px] snap-center transform hover:scale-105 transition-all duration-300 ${
+              project.liveUrl ? "cursor-pointer" : ""
+            }`}
+            onClick={() => {
+              if (project.liveUrl) {
+                window.open(project.liveUrl, "_blank");
+              }
+            }}
+            role={project.liveUrl ? "link" : undefined}
+            aria-label={project.liveUrl ? `Visit ${project.title}` : undefined}
+            tabIndex={project.liveUrl ? 0 : undefined}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && project.liveUrl) {
+                window.open(project.liveUrl, "_blank");
+              }
+            }}
           >
             <div className="aspect-video relative overflow-hidden">
               <img
                 src={project.image.light}
-                alt={project.title}
+                alt={`${project.title} - Light Mode`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:hidden"
+                loading="lazy"
               />
               <img
                 src={project.image.dark || project.image.light}
-                alt={project.title}
+                alt={`${project.title} - Dark Mode`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:block"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-              <p className="text-muted-foreground mb-4 text-justify hyphens-auto">{project.description}</p>
-              <div className="flex justify-center">
-                {project.liveUrl ? (
-                  <a
-                    target="_blank"
-                    href={project.liveUrl}
-                    className="border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    Live Demo
-                  </a>
-                ) : null}
-              </div>
+              <p className="text-muted-foreground mb-4 text-justify hyphens-auto">
+                {project.description}
+              </p>
             </div>
-          </div>
+          </Card>
         ))}
       </div>
+      {/* Left Navigation Button */}
+      <Button
+        variant="ghost"
+        size="icon"
+        className={`absolute left-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10 ${
+          !isContentScrollable || !canScrollLeft ? "hidden" : ""
+        }`}
+        onClick={() => scroll("left")}
+        aria-label="Scroll left"
+        tabIndex={isContentScrollable && canScrollLeft ? 0 : -1}
+      >
+        <ChevronLeft className="h-6 w-6" />
+      </Button>
+
+      {/* Right Navigation Button */}
+      <Button
+        variant="ghost"
+        size="icon"
+        className={`absolute right-0 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-background z-10 ${
+          !isContentScrollable || !canScrollRight ? "hidden" : ""
+        }`}
+        onClick={() => scroll("right")}
+        aria-label="Scroll right"
+        tabIndex={isContentScrollable && canScrollRight ? 0 : -1}
+      >
+        <ChevronRight className="h-6 w-6" />
+      </Button>
     </div>
   );
 };
@@ -173,7 +258,7 @@ const Projects = () => {
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 animate-fade-up">
-          <span className="inline-block px-3 py-1 text-sm font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4">
+          <span className="inline-block px-3 py-1 text-sm md:text-md font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4 select-none">
             Our Projects
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
@@ -184,7 +269,10 @@ const Projects = () => {
             excellence.
           </p>
 
-          <Tabs defaultValue="startup" className="w-full max-w-7xl mx-auto mt-4">
+          <Tabs
+            defaultValue="startup"
+            className="w-full max-w-7xl mx-auto mt-4"
+          >
             <TabsList className="grid w-full grid-cols-2 mb-8">
               <TabsTrigger value="startup">Startup Projects</TabsTrigger>
               <TabsTrigger value="individual">Individual Projects</TabsTrigger>
