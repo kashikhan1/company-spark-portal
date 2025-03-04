@@ -34,9 +34,14 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center">
             <img
-              src="/lovable-uploads/f39113c7-769b-4626-bdb0-5d90ba431667.png"
+              src="/ali-square-logo-light.png"
               alt="Ali Square Logo"
-              className="h-8 w-auto mr-2"
+              className="dark:hidden h-8 w-auto mr-2"
+            />
+            <img
+              src="/ali-square-logo-dark.png"
+              alt="Ali Square Logo"
+              className="hidden dark:block h-8 w-auto mr-2"
             />
             <span className="text-xl font-semibold">Ali Square</span>
           </div>
