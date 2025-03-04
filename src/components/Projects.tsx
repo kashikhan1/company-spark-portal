@@ -200,11 +200,13 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
                 src={project.image.light}
                 alt={`${project.title} - Light Mode`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:hidden"
+                loading="lazy"
               />
               <img
                 src={project.image.dark || project.image.light}
                 alt={`${project.title} - Dark Mode`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:block"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>

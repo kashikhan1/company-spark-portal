@@ -93,6 +93,7 @@ const Services = () => {
                     src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-6">

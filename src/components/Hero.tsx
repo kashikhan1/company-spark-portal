@@ -16,6 +16,7 @@ const Hero = () => {
           src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
           alt="Hero background"
           className="w-full h-full object-cover opacity-20 dark:opacity-10"
+          loading="lazy"
         />
       </div>
 

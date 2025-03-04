@@ -72,24 +72,6 @@ const Team = () => {
       id="team"
       className="section-padding relative bg-gradient-to-b from-background to-secondary/5 overflow-hidden"
     >
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover opacity-10"
-          aria-hidden="true"
-        >
-          <source
-            src="https://assets.mixkit.co/videos/preview/mixkit-white-abstract-moving-lines-on-black-background-48160-large.mp4"
-            type="video/mp4"
-          />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background/80" />
-      </div>
-
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16 animate-fade-up">
           <span
@@ -132,6 +114,7 @@ const Team = () => {
                       src={member.image}
                       alt={`${member.name}'s profile picture`}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
                     />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
