@@ -20,6 +20,8 @@ const Navbar = () => {
 
   if (!mounted) return null;
 
+  const closeMobileMenu = () => setIsOpen(false);
+
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -166,6 +168,7 @@ const Navbar = () => {
             role="menuitem"
             tabIndex={isOpen ? 0 : -1}
             aria-current={window.location.hash === "#home" ? "page" : undefined}
+            onClick={closeMobileMenu}
           >
             Home
           </a>
@@ -177,6 +180,7 @@ const Navbar = () => {
             aria-current={
               window.location.hash === "#projects" ? "page" : undefined
             }
+            onClick={closeMobileMenu}
           >
             Projects
           </a>
@@ -188,6 +192,7 @@ const Navbar = () => {
             aria-current={
               window.location.hash === "#services" ? "page" : undefined
             }
+            onClick={closeMobileMenu}
           >
             Services
           </a>
@@ -197,6 +202,7 @@ const Navbar = () => {
             role="menuitem"
             tabIndex={isOpen ? 0 : -1}
             aria-current={window.location.hash === "#team" ? "page" : undefined}
+            onClick={closeMobileMenu}
           >
             Team
           </a>
@@ -208,6 +214,7 @@ const Navbar = () => {
             aria-current={
               window.location.hash === "#contact" ? "page" : undefined
             }
+            onClick={closeMobileMenu}
           >
             Contact
           </a>
