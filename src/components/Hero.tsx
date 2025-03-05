@@ -43,7 +43,7 @@ const Hero = () => {
             style={{ animationDelay: "0.2s" }}
           >
             From concept to deployment, We deliver custom software solutions
-            tailored to your business needs. Let&apos;s grow together.
+            tailored to your business. Let&apos;s talk.
           </p>
 
           <div

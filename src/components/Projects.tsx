@@ -64,9 +64,9 @@ const individualProjects = [
 
 const startupProjects = [
   {
-    title: "Zameen Scraper",
+    title: "Attaq Properties Finder",
     description:
-      "A real estate web scraping tool that extracts property listings from Zameen.com and stores them in a database. And serves the data through a REST API.",
+      "Effortlessly collect real estate insights with this web scraping tool. Zameen Scraper pulls property listings from Zameen.com, stores them in a database, and delivers the data through a fast, flexible REST API—perfect for developers, analysts, or businesses tracking Pakistan's property market.",
     image: {
       light: "/projects/scrapper_zameen_homepage.png",
       dark: "/projects/scrapper_zameen_homepage_dark.png",
@@ -81,7 +81,7 @@ const startupProjects = [
     description:
       "A role-based logistics platform with car rental features, real-time trip management, and an admin dashboard for tracking KPIs. It includes MQTT-powered notifications, advanced filtering, and analytics for efficient fleet operations.",
     image: {
-      light: "/projects/ueber-pro-logo.png",
+      light: "/projects/rider-pro-dashboard.png",
     },
     tags: [
       "PostgreSQL",
@@ -195,17 +195,17 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
               }
             }}
           >
-            <div className="aspect-video relative overflow-hidden">
+            <div className="aspect-video relative overflow-hidden rounded-t-lg">
               <img
                 src={project.image.light}
                 alt={`${project.title} - Light Mode`}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:hidden"
+                className="w-full h-full transition-transform duration-500 group-hover:scale-110 dark:hidden"
                 loading="lazy"
               />
               <img
                 src={project.image.dark || project.image.light}
                 alt={`${project.title} - Dark Mode`}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 dark:block"
+                className="w-full h-full  transition-transform duration-500 group-hover:scale-110 dark:block"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -14,37 +14,37 @@ const teamMembers = [
     name: "Muhammad Ali Anjum",
     github: "https://github.com/alianjum0",
     linkedin: "https://www.linkedin.com/in/alianjum0/",
-    twitter: "#",
+    twitter: "",
     role: "CEO & Founder",
     image: "/team/Ali-Anjum.jpeg",
-    bio: "Visionary CEO & Founder with over 15 years of experience driving technological innovation and business transformation. Passionate about building cutting-edge solutions, I lead with a strategic mindset, fostering growth, and empowering teams to turn bold ideas into impactful realities within the ever-evolving tech landscape.",
+    bio: "With 15+ years steering tech innovation, I'm passionate about turning bold ideas into reality. I lead our team with a focus on strategy, growth, and impactful solutions.",
   },
   {
     name: "Muhammad Kashif Khan",
     github: "https://github.com/kashikhan1",
     linkedin: "https://www.linkedin.com/in/muhammad-kashif-khan",
-    twitter: "#",
+    twitter: "",
     role: "Tech Lead",
     image: "/team/Kashif-Khan.jpeg",
-    bio: "Seasoned Tech Lead and Senior Full Stack Developer with over 9 years of experience architecting and delivering high-performance web applications and scalable backend systems. Adept at leading cross-functional teams, driving technical innovation, and implementing best practices to achieve business goals and exceptional user experiences.",
+    bio: "With 9+ years in full-stack development, I lead our technical vision, steering projects from architecture to delivery. I mentor developers, ensure scalable solutions, and align tech with business goals.",
   },
   {
     name: "Asim Ghaffar",
     github: "https://github.com/Mr-AsimGhaffar",
     linkedin: "https://www.linkedin.com/in/asim-ghaffar-4a60921b1/",
-    twitter: "#",
+    twitter: "",
     role: "Frontend Developer",
     image: "/team/Asim-Ghaffar.jpeg",
-    bio: "Creative and meticulous Frontend Developer with a passion for crafting seamless user interfaces using React.js, Next.js, JavaScript, and TypeScript. With a strong focus on detail and innovation, I specialize in building responsive, high-quality solutions that elevate user experiences and deliver measurable impact on cutting-edge projects.",
+    bio: "I craft seamless, responsive interfaces using React.js, Next.js, and TypeScript. Detail-driven and creative, I build frontends that enhance user experiences.",
   },
   {
     name: "Muhammad Abdullah",
     github: "https://github.com/Muhammad-Abdullah012",
     linkedin: "https://www.linkedin.com/in/muhammad-abdullah-718a34245/",
-    twitter: "#",
+    twitter: "",
     role: "Full Stack Developer",
     image: "/team/Muhammad-Abdullah.jpeg",
-    bio: "Versatile Full Stack Developer with over 2 years of hands-on experience developing and deploying web and mobile applications. Proficient in both frontend and backend technologies, I thrive on creating efficient, scalable solutions that bridge user needs with robust system performance, consistently delivering value from concept to completion.",
+    bio: "With 2+ years of experience, I develop efficient web and mobile apps from end to end. I bridge frontend and backend to deliver scalable, practical solutions.",
   },
 ];
 
@@ -119,33 +119,39 @@ const Team = () => {
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <div className="flex justify-center space-x-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white hover:text-primary transition-colors"
-                        aria-label={`Visit ${member.name}'s LinkedIn profile`}
-                      >
-                        <LinkedinIcon className="h-5 w-5" />
-                      </a>
-                      <a
-                        href={member.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Visit ${member.name}'s Twitter profile`}
-                        className="text-white hover:text-primary transition-colors"
-                      >
-                        <TwitterIcon className="h-5 w-5" />
-                      </a>
-                      <a
-                        href={member.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Visit ${member.name}'s GitHub profile`}
-                        className="text-white hover:text-primary transition-colors"
-                      >
-                        <GithubIcon className="h-5 w-5" />
-                      </a>
+                      {member.linkedin && (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-secondary text-primary rounded-full p-2 transition-all duration-300 flex items-center justify-center"
+                          aria-label={`Visit ${member.name}'s LinkedIn profile`}
+                        >
+                          <LinkedinIcon className="h-5 w-5" />
+                        </a>
+                      )}
+                      {member.twitter && (
+                        <a
+                          href={member.twitter}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Visit ${member.name}'s Twitter profile`}
+                          className="bg-secondary text-primary rounded-full p-2 transition-all duration-300 flex items-center justify-center"
+                        >
+                          <TwitterIcon className="h-5 w-5" />
+                        </a>
+                      )}
+                      {member.github && (
+                        <a
+                          href={member.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Visit ${member.name}'s GitHub profile`}
+                          className="bg-secondary text-primary rounded-full p-2 transition-all duration-300 flex items-center justify-center"
+                        >
+                          <GithubIcon className="h-5 w-5" />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

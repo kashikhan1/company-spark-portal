@@ -7,14 +7,14 @@ const services = [
   {
     title: "Custom Website Development",
     description:
-      "We build sleek, high-performance websites tailored for freelancers and small businesses.",
+      "Sleek, high-performance websites built for freelancers and small businesses.",
     features: ["Custom Design", "SEO-Friendly", "Mobile Responsive"],
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
   },
   {
     title: "Startup Software Solutions",
     description:
-      "End-to-end software solutions to help startups scale and thrive in the digital world.",
+      "End-to-end software to help startups scale and succeed.",
     features: [
       "MVP Development",
       "Scalable Architecture",
@@ -25,14 +25,14 @@ const services = [
   {
     title: "Technical Consultation & Strategy",
     description:
-      "Get expert guidance on technology choices, digital strategies, and product development.",
+      "Expert guidance to navigate tech choices and fuel your growth.",
     features: ["Market Research", "Tech Stack Selection", "Growth Planning"],
     image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
   },
   {
     title: "Branding & Digital Identity",
     description:
-      "Craft a compelling brand identity that stands out in a crowded marketplace.",
+      "Standout branding that defines your place in the market.",
     features: [
       "Logo & Visual Design",
       "Brand Guidelines",
@@ -72,8 +72,7 @@ const Services = () => {
             Solutions We Provide
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            We offer comprehensive solutions to help your business grow and
-            succeed in the digital age.
+          Unlock your business&apos;s potential with tailored digital solutions that drive growth and impact.
           </p>
         </div>
 
