@@ -80,7 +80,7 @@ const Services = () => {
           {/* Horizontal Scroll Container */}
           <div
             ref={sliderRef}
-            className="flex space-x-6 px-4 py-4 overflow-x-auto custom-scrollbar snap-x snap-mandatory scroll-smooth"
+            className="flex space-x-6 px-4 py-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth"
           >
             {services.map((service, index) => (
               <Card

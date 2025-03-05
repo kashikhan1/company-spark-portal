@@ -93,7 +93,7 @@ const Team = () => {
         <div className="relative">
           <div
             ref={sliderRef}
-            className="flex space-x-6 px-4 py-4 overflow-x-auto overflow-y-hidden custom-scrollbar snap-x snap-mandatory scroll-smooth"
+            className="flex space-x-6 px-4 py-4 overflow-x-auto overflow-y-hidden no-scrollbar snap-x snap-mandatory scroll-smooth"
             aria-label="Team Members"
             tabIndex={0}
             onKeyDown={(e) => {

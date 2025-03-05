@@ -168,7 +168,7 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
         ref={sliderRef}
         role="region"
         aria-label="Project Grid"
-        className="flex gap-8 px-4 py-4 overflow-x-auto custom-scrollbar snap-x snap-mandatory scroll-smooth"
+        className="flex gap-8 px-4 py-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth"
         tabIndex={0}
         onKeyDown={(e) => {
           if (e.key === "ArrowLeft") scroll("left");
@@ -246,6 +246,7 @@ const ProjectGrid = ({ projects }: { projects: typeof startupProjects }) => {
       >
         <ChevronRight className="h-6 w-6" />
       </Button>
+      <div className="absolute left-0 right-0 bottom-0 h-1 bg-gradient-to-r from-primary/5 via-primary/20 to-primary/5 rounded-full" />
     </div>
   );
 };
