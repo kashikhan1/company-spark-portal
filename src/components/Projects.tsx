@@ -64,7 +64,7 @@ const individualProjects = [
 
 const startupProjects = [
   {
-    title: "Zameen Scrapper",
+    title: "Zameen Scraper",
     description:
       "A real estate web scraping tool that extracts property listings from Zameen.com and stores them in a database. And serves the data through a REST API.",
     image: {
