@@ -1,13 +1,17 @@
+
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "./ui/button";
 import { useTheme } from "next-themes";
+import { useLanguage } from "../contexts/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setMounted(true);
@@ -59,7 +63,7 @@ const Navbar = () => {
                   window.location.hash === "#home" ? "page" : undefined
                 }
               >
-                Home
+                {t('nav.home')}
               </a>
               <a
                 href="#projects"
@@ -68,7 +72,7 @@ const Navbar = () => {
                   window.location.hash === "#projects" ? "page" : undefined
                 }
               >
-                Projects
+                {t('nav.projects')}
               </a>
               <a
                 href="#services"
@@ -77,7 +81,7 @@ const Navbar = () => {
                   window.location.hash === "#services" ? "page" : undefined
                 }
               >
-                Services
+                {t('nav.services')}
               </a>
               <a
                 href="#team"
@@ -86,7 +90,7 @@ const Navbar = () => {
                   window.location.hash === "#team" ? "page" : undefined
                 }
               >
-                Team
+                {t('nav.team')}
               </a>
               <a
                 href="#contact"
@@ -95,7 +99,7 @@ const Navbar = () => {
                   window.location.hash === "#contact" ? "page" : undefined
                 }
               >
-                Contact
+                {t('nav.contact')}
               </a>
               <Button
                 variant="ghost"
@@ -114,11 +118,13 @@ const Navbar = () => {
                   <Moon className="h-5 w-5" />
                 )}
               </Button>
+              <LanguageSwitcher />
             </div>
           </div>
 
           {/* Mobile Navigation Toggle */}
           <div className="md:hidden flex items-center gap-2">
+            <LanguageSwitcher />
             <Button
               variant="ghost"
               size="icon"
@@ -170,7 +176,7 @@ const Navbar = () => {
             aria-current={window.location.hash === "#home" ? "page" : undefined}
             onClick={closeMobileMenu}
           >
-            Home
+            {t('nav.home')}
           </a>
           <a
             href="#projects"
@@ -182,7 +188,7 @@ const Navbar = () => {
             }
             onClick={closeMobileMenu}
           >
-            Projects
+            {t('nav.projects')}
           </a>
           <a
             href="#services"
@@ -194,7 +200,7 @@ const Navbar = () => {
             }
             onClick={closeMobileMenu}
           >
-            Services
+            {t('nav.services')}
           </a>
           <a
             href="#team"
@@ -204,7 +210,7 @@ const Navbar = () => {
             aria-current={window.location.hash === "#team" ? "page" : undefined}
             onClick={closeMobileMenu}
           >
-            Team
+            {t('nav.team')}
           </a>
           <a
             href="#contact"
@@ -216,7 +222,7 @@ const Navbar = () => {
             }
             onClick={closeMobileMenu}
           >
-            Contact
+            {t('nav.contact')}
           </a>
         </div>
       </div>

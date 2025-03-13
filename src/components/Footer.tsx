@@ -1,7 +1,11 @@
-import { ChevronUp, LinkedinIcon, Mail, Phone, MapPin } from "lucide-react";
+
+import { ChevronUp, LinkedinIcon, Mail, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -14,6 +18,7 @@ const Footer = () => {
     address:
       "Interlace Plaza 4th floor, Twinhub I-8 Markaz, Islamabad, Pakistan",
   };
+  
   return (
     <footer
       className="bg-background border-t"
@@ -70,7 +75,7 @@ const Footer = () => {
         <hr />
         {/* Copyright Notice */}
         <div className="text-center text-muted-foreground">
-          © {new Date().getFullYear()} Ali Square. All rights reserved.
+          {t('footer.copyright').replace('{year}', new Date().getFullYear().toString())}
         </div>
       </div>
     </footer>
