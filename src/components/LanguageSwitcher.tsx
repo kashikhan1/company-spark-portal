@@ -18,11 +18,17 @@ const LanguageSwitcher = () => {
     { label: t('language.de'), value: 'de', flag: '🇩🇪' },
   ];
 
+  // Find the current language object
+  const currentLanguage = languages.find(lang => lang.value === language);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="ml-1" aria-label="Select language">
-          <Globe className="h-5 w-5" />
+          <span className="flex items-center gap-1.5">
+            <Globe className="h-5 w-5" />
+            <span className="text-lg">{currentLanguage?.flag}</span>
+          </span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
