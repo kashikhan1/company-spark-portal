@@ -13,9 +13,9 @@ import {
 const LanguageSwitcher = () => {
   const { language, setLanguage, t } = useLanguage();
 
-  const languages: { label: string; value: Language }[] = [
-    { label: t('language.en'), value: 'en' },
-    { label: t('language.de'), value: 'de' },
+  const languages: { label: string; value: Language; flag: string }[] = [
+    { label: t('language.en'), value: 'en', flag: '🇬🇧' },
+    { label: t('language.de'), value: 'de', flag: '🇩🇪' },
   ];
 
   return (
@@ -32,7 +32,7 @@ const LanguageSwitcher = () => {
             onClick={() => setLanguage(lang.value)}
             className={language === lang.value ? "bg-primary/10 font-medium" : ""}
           >
-            {lang.label}
+            <span className="mr-2 text-lg">{lang.flag}</span> {lang.label}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

@@ -31,10 +31,10 @@ const Footer = () => {
           {/* Social Media Links */}
           <div className="flex space-x-4" aria-label="Social Media Links">
             <a
-              href="https://www.linkedin.com/company/ali-square/"
+              href="https://www.linkedin.com/company/innovate-iq/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Ali Square on LinkedIn"
+              aria-label="Innovate IQ on LinkedIn"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               <LinkedinIcon className="h-5 w-5" />

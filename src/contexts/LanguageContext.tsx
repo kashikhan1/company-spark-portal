@@ -62,6 +62,12 @@ export const translations = {
     'service.startup.feature2': 'Scalable Architecture',
     'service.startup.feature3': 'Third-Party Integrations',
     
+    'service.mobile.title': 'Mobile App Development',
+    'service.mobile.description': 'Cross-platform mobile applications for iOS and Android devices.',
+    'service.mobile.feature1': 'Native Performance',
+    'service.mobile.feature2': 'Offline Capability',
+    'service.mobile.feature3': 'Push Notifications',
+    
     'service.consultation.title': 'Technical Consultation & Strategy',
     'service.consultation.description': 'Expert guidance to navigate tech choices and fuel your growth.',
     'service.consultation.feature1': 'Market Research',
@@ -95,7 +101,7 @@ export const translations = {
     'contact.form.instructions': 'Fill out the form below to send us a message. All fields are required.',
     
     // Footer
-    'footer.copyright': '© {year} Ali Square. All rights reserved.',
+    'footer.copyright': '© {year} Innovate IQ. All rights reserved.',
     
     // Language switcher
     'language.en': 'English',
@@ -143,6 +149,12 @@ export const translations = {
     'service.startup.feature2': 'Skalierbare Architektur',
     'service.startup.feature3': 'Drittanbieter-Integrationen',
     
+    'service.mobile.title': 'Mobile App-Entwicklung',
+    'service.mobile.description': 'Plattformübergreifende mobile Anwendungen für iOS- und Android-Geräte.',
+    'service.mobile.feature1': 'Native Leistung',
+    'service.mobile.feature2': 'Offline-Fähigkeit',
+    'service.mobile.feature3': 'Push-Benachrichtigungen',
+    
     'service.consultation.title': 'Technische Beratung & Strategie',
     'service.consultation.description': 'Expertenhilfe bei der Navigation durch technische Entscheidungen und zur Förderung Ihres Wachstums.',
     'service.consultation.feature1': 'Marktforschung',
@@ -176,7 +188,7 @@ export const translations = {
     'contact.form.instructions': 'Füllen Sie das Formular aus, um uns eine Nachricht zu senden. Alle Felder sind erforderlich.',
     
     // Footer
-    'footer.copyright': '© {year} Ali Square. Alle Rechte vorbehalten.',
+    'footer.copyright': '© {year} Innovate IQ. Alle Rechte vorbehalten.',
     
     // Language switcher
     'language.en': 'Englisch',

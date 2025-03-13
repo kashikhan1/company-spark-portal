@@ -41,17 +41,17 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center">
             <img
               src="/ali-square-logo-light.png"
-              alt="Ali Square Logo"
+              alt="Innovate IQ Logo"
               className="dark:hidden h-8 w-auto mr-2"
               loading="lazy"
             />
             <img
               src="/ali-square-logo-dark.png"
-              alt="Ali Square Logo"
+              alt="Innovate IQ Logo"
               className="hidden dark:block h-8 w-auto mr-2"
               loading="lazy"
             />
-            <span className="text-xl font-semibold">Ali Square</span>
+            <span className="text-xl font-semibold">Innovate IQ</span>
           </div>
 
           <div className="hidden md:block">

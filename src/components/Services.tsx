@@ -31,6 +31,16 @@ const Services = () => {
       image: "https://images.unsplash.com/photo-1522252234503-e356532cafd5",
     },
     {
+      titleKey: "service.mobile.title",
+      descriptionKey: "service.mobile.description",
+      featuresKeys: [
+        "service.mobile.feature1", 
+        "service.mobile.feature2", 
+        "service.mobile.feature3"
+      ],
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c",
+    },
+    {
       titleKey: "service.consultation.title",
       descriptionKey: "service.consultation.description",
       featuresKeys: [
@@ -49,7 +59,7 @@ const Services = () => {
         "service.branding.feature3"
       ],
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-    },
+    }
   ];
 
   const scroll = (direction: "left" | "right") => {
