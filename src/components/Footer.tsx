@@ -1,11 +1,7 @@
-
-import { ChevronUp, LinkedinIcon, Mail, MapPin, Phone } from "lucide-react";
+import { ChevronUp, LinkedinIcon, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
-import { useLanguage } from "../contexts/LanguageContext";
 
 const Footer = () => {
-  const { t } = useLanguage();
-  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -14,11 +10,10 @@ const Footer = () => {
   };
 
   const contactInfo = {
-    email: "info@innovateiq.net",
-    phone: "+49 173 303 2895",
-    address: "Am Taubenberg 4, 97502 Euerbach, Germany",
+    email: import.meta.env.VITE_PUBLIC_TO_EMAIL,
+    address:
+      "Interlace Plaza 4th floor, Twinhub I-8 Markaz, Islamabad, Pakistan",
   };
-  
   return (
     <footer
       className="bg-background border-t"
@@ -27,18 +22,23 @@ const Footer = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6 py-6">
         {/* Main Footer Content */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Company Logo */}
-          <div className="flex items-center">
-            <img 
-              src="https://innovateiq.net/images/website_logo.svg" 
-              alt="Innovate IQ Logo" 
-              className="h-10"
-            />
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          {/* Social Media Links */}
+          <div className="flex space-x-4" aria-label="Social Media Links">
+            <a
+              href="https://www.linkedin.com/company/ali-square/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Ali Square on LinkedIn"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <LinkedinIcon className="h-5 w-5" />
+            </a>
+            {/* Add more social media icons here if needed */}
           </div>
 
           {/* Company Contact Information */}
-          <div className="text-sm text-muted-foreground flex flex-col gap-2">
+          <div className="text-sm text-muted-foreground flex-2 flex flex-col md:flex-row gap-6 md:gap-8">
             <div className="flex flex-row gap-2 items-center">
               <MapPin className="w-4 h-4" />
               <address>{contactInfo.address}</address>
@@ -52,50 +52,25 @@ const Footer = () => {
                 {contactInfo.email}
               </a>
             </div>
-            <div className="flex flex-row gap-2 items-center">
-              <Phone className="w-4 h-4" />
-              <a
-                href={`tel:${contactInfo.phone}`}
-                className="hover:text-primary"
-              >
-                {contactInfo.phone}
-              </a>
-            </div>
           </div>
 
-          {/* Social Media Links and Scroll Button */}
-          <div className="flex flex-col gap-4 items-center">
-            <div className="flex space-x-4" aria-label="Social Media Links">
-              <a
-                href="https://www.linkedin.com/company/innovate-iq/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Innovate IQ on LinkedIn"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <LinkedinIcon className="h-5 w-5" />
-              </a>
-              {/* Add more social media icons here if needed */}
-            </div>
-            
-            {/* Scroll to Top Button */}
-            <Button
-              variant="outline"
-              size="icon"
-              className="rounded-full hover:scale-110 transition-transform"
-              onClick={scrollToTop}
-              aria-label="Scroll to top of the page"
-              tabIndex={0}
-            >
-              <ChevronUp className="h-5 w-5" />
-            </Button>
-          </div>
+          {/* Scroll to Top Button */}
+          <Button
+            variant="outline"
+            size="icon"
+            className="rounded-full hover:scale-110 transition-transform"
+            onClick={scrollToTop}
+            aria-label="Scroll to top of the page"
+            tabIndex={0}
+          >
+            <ChevronUp className="h-5 w-5" />
+          </Button>
         </div>
 
         <hr />
         {/* Copyright Notice */}
         <div className="text-center text-muted-foreground">
-          ©2024 Innovate IQ
+          © {new Date().getFullYear()} Ali Square. All rights reserved.
         </div>
       </div>
     </footer>

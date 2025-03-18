@@ -1,66 +1,49 @@
-
 import { Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { useRef } from "react";
-import { useLanguage } from "../contexts/LanguageContext";
+
+const services = [
+  {
+    title: "Custom Website Development",
+    description:
+      "Sleek, high-performance websites built for freelancers and small businesses.",
+    features: ["Custom Design", "SEO-Friendly", "Mobile Responsive"],
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+  },
+  {
+    title: "Startup Software Solutions",
+    description:
+      "End-to-end software to help startups scale and succeed.",
+    features: [
+      "MVP Development",
+      "Scalable Architecture",
+      "Third-Party Integrations",
+    ],
+    image: "https://images.unsplash.com/photo-1522252234503-e356532cafd5",
+  },
+  {
+    title: "Technical Consultation & Strategy",
+    description:
+      "Expert guidance to navigate tech choices and fuel your growth.",
+    features: ["Market Research", "Tech Stack Selection", "Growth Planning"],
+    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
+  },
+  {
+    title: "Branding & Digital Identity",
+    description:
+      "Standout branding that defines your place in the market.",
+    features: [
+      "Logo & Visual Design",
+      "Brand Guidelines",
+      "Consistent Digital Presence",
+    ],
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+  },
+];
 
 const Services = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const { t } = useLanguage();
-
-  const services = [
-    {
-      titleKey: "service.website.title",
-      descriptionKey: "service.website.description",
-      featuresKeys: [
-        "service.website.feature1", 
-        "service.website.feature2", 
-        "service.website.feature3"
-      ],
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-    },
-    {
-      titleKey: "service.startup.title",
-      descriptionKey: "service.startup.description",
-      featuresKeys: [
-        "service.startup.feature1", 
-        "service.startup.feature2", 
-        "service.startup.feature3"
-      ],
-      image: "https://images.unsplash.com/photo-1522252234503-e356532cafd5",
-    },
-    {
-      titleKey: "service.mobile.title",
-      descriptionKey: "service.mobile.description",
-      featuresKeys: [
-        "service.mobile.feature1", 
-        "service.mobile.feature2", 
-        "service.mobile.feature3"
-      ],
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c",
-    },
-    {
-      titleKey: "service.consultation.title",
-      descriptionKey: "service.consultation.description",
-      featuresKeys: [
-        "service.consultation.feature1", 
-        "service.consultation.feature2", 
-        "service.consultation.feature3"
-      ],
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
-    },
-    {
-      titleKey: "service.branding.title",
-      descriptionKey: "service.branding.description",
-      featuresKeys: [
-        "service.branding.feature1", 
-        "service.branding.feature2", 
-        "service.branding.feature3"
-      ],
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-    }
-  ];
 
   const scroll = (direction: "left" | "right") => {
     if (sliderRef.current) {
@@ -83,13 +66,13 @@ const Services = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <span className="inline-block px-3 py-1 text-sm md:text-md font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4 select-none">
-            {t('services.badge')}
+            Our Services
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            {t('services.title')}
+            Solutions We Provide
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            {t('services.subtitle')}
+          Unlock your business&apos;s potential with tailored digital solutions that drive growth and impact.
           </p>
         </div>
 
@@ -107,23 +90,23 @@ const Services = () => {
                 <div className="h-48 overflow-hidden">
                   <img
                     src={service.image}
-                    alt={t(service.titleKey)}
+                    alt={service.title}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                     loading="lazy"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-4">
-                    {t(service.titleKey)}
+                    {service.title}
                   </h3>
                   <p className="text-muted-foreground mb-6">
-                    {t(service.descriptionKey)}
+                    {service.description}
                   </p>
                   <ul className="space-y-3">
-                    {service.featuresKeys.map((featureKey, featureIndex) => (
+                    {service.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center">
                         <Check className="h-5 w-5 text-green-500 dark:text-green-400 mr-2" />
-                        <span>{t(featureKey)}</span>
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
