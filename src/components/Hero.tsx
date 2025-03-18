@@ -27,7 +27,7 @@ const Hero = () => {
             aria-live="polite"
             className="inline-block animate-fade-down px-3 py-1 text-sm md:text-md font-semibold bg-primary/10 dark:bg-primary/20 rounded-full mb-4 select-none"
           >
-            Innovate with Purpose
+            Adding Value Using AI
           </span>
 
           <h1
