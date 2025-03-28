@@ -72,7 +72,7 @@ const startupProjects = [
       dark: "/projects/scrapper_zameen_homepage_dark.png",
     },
     tags: ["Cheerio", "React", "Node.js", "Postgres", "Tailwind CSS"],
-    liveUrl: "https://zameen.alisquare.com/",
+    liveUrl: "",
     githubUrl:
       "https://github.com/Muhammad-Abdullah012/scrapper_zameen_backend",
   },
