@@ -72,7 +72,7 @@ const startupProjects = [
       dark: "/projects/scrapper_zameen_homepage_dark.png",
     },
     tags: ["Cheerio", "React", "Node.js", "Postgres", "Tailwind CSS"],
-    liveUrl: "",
+    liveUrl: "https://projects.weinnovate.net/preview/attaq-dashboard.md",
     githubUrl:
       "https://github.com/Muhammad-Abdullah012/scrapper_zameen_backend",
   },
@@ -92,7 +92,7 @@ const startupProjects = [
       "Prisma",
       "MQTT",
     ],
-    liveUrl: "",
+    liveUrl: "https://projects.weinnovate.net/preview/rider-pro.md",
     githubUrl: "https://github.com/Muhammad-Abdullah012/ueber-pro",
   },
   {
@@ -111,7 +111,7 @@ const startupProjects = [
       "Prisma",
       "MQTT",
     ],
-    liveUrl: "",
+    liveUrl: "https://projects.weinnovate.net/preview/brain-bash.md",
     githubUrl: "https://github.com/Muhammad-Abdullah012/brain-bash",
   },
 ];
