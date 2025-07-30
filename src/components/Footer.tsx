@@ -12,7 +12,7 @@ const Footer = () => {
   const contactInfo = {
     email: import.meta.env.VITE_PUBLIC_TO_EMAIL,
     address:
-      "Interlace Plaza 4th floor, Twinhub I-8 Markaz, Islamabad, Pakistan",
+      "Via Pinerolo, 16, 10152 Torino TO",
   };
   return (
     <footer
