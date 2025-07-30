@@ -28,6 +28,61 @@ const individualProjects = [
     githubUrl: "#",
   },
   {
+    title: "3d Object Following Cursor",
+    description:
+      "A 3D object that dynamically follows the movement of your cursor in real-time.",
+    image: {
+      light: "/projects/3dObject.png",
+    },
+    tags: ["Html", "CSS", "JavaScript"],
+    liveUrl: "https://alisquare.weinnovate.net/3dObject/",
+    githubUrl: "#",
+  },
+  {
+    title: "Global Widget",
+    description:
+      "A reusable global widget that can be integrated across multiple pages or components for consistent functionality and design.",
+    image: {
+      light: "/projects/globalWidget.png",
+    },
+    tags: ["Html", "CSS", "JavaScript"],
+    liveUrl: "https://alisquare.weinnovate.net/globalWidget/",
+    githubUrl: "#",
+  },
+  {
+    title: "Custom Cursor",
+    description:
+      "A custom cursor that replaces the default pointer with an interactive 3D object for a unique user experience.",
+    image: {
+      light: "/projects/customCursor.png",
+    },
+    tags: ["Html", "CSS", "JavaScript"],
+    liveUrl: "https://alisquare.weinnovate.net/customCursor/",
+    githubUrl: "#",
+  },
+  {
+    title: "Loading Steps",
+    description:
+      "Created animated loading steps using HTML and CSS to visually indicate progress through multiple stages.",
+    image: {
+      light: "/projects/loadingCheckmark.png",
+    },
+    tags: ["Html", "CSS", "JavaScript"],
+    liveUrl: "https://alisquare.weinnovate.net/loadingCheckmark/",
+    githubUrl: "#",
+  },
+  {
+    title: "PDF to Text Converter",
+    description:
+      "Developed a tool to extract and convert PDF content into plain, editable text format.",
+    image: {
+      light: "/projects/pdfToText.png",
+    },
+    tags: ["Html", "CSS", "JavaScript"],
+    liveUrl: "https://alisquare.weinnovate.net/pdfToText/",
+    githubUrl: "#",
+  },
+  {
     title: "Full Stack Developer Portfolio",
     description:
       "A modern portfolio website showcasing individual projects and skills.",
